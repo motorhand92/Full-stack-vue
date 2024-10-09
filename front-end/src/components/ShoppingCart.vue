@@ -1,6 +1,6 @@
 <template>
     <div v-if="cartItems.length>0" >
-        <div>
+        <div class="cart-wrap">
             <div
             class="product-container" 
             v-for="product in cartItems"

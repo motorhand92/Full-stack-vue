@@ -23,7 +23,8 @@ button {
 
 h1 {
   border-bottom: 1px solid black;
-  margin: 0;
+  margin-left: 10%;
+  margin-right: 10%;
   margin-top: 16px;
   padding: 16px;
 }
@@ -132,10 +133,8 @@ h1 {
   top: 16px;
 }
 
-.nav-buttons-wrap {
-  position: absolute;
-  right: 16px;
-  top: 16px;
+.nav-buttons {
+  margin-left:8px;
 }
 
 .cart-link {
@@ -150,6 +149,8 @@ h1 {
   gap: 16px;
   flex-wrap: wrap;
   margin-top: 16px;
+  margin-left:10%;
+  margin-right: 10%;
 }
 
 .product-item {
@@ -203,4 +204,9 @@ h1 {
 .remove-button {
   flex: 1;
   margin: auto;
+}
+
+.cart-wrap {
+  margin-left:10%;
+  margin-right: 10%;
 }

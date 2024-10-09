@@ -7,6 +7,7 @@ import ProductsPage from './pages/ProductsPage.vue'
 import ShoppingCartPage from './pages/ShoppingCartPage.vue'
 import ProductDetailsPage from './pages/ProductDetailsPage.vue'
 import NotFoundPage from './pages/NotFoundPage.vue'
+import SignInPage from './pages/SignInPage.vue'
 
 createApp(App)
 .use(VueRouter.createRouter({
@@ -17,6 +18,9 @@ createApp(App)
     },{
         path:"/cart",
         component:ShoppingCartPage,
+    },{
+        path:"/signin",
+        component:SignInPage,
     },{
         path:"/products/:productId",
         component:ProductDetailsPage,

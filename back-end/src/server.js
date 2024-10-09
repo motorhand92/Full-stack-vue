@@ -37,12 +37,6 @@ async function Start (){
     app.post("/api/users/:userId/cart",async(req,res)=>{   
         const productId = req.body.id
         const userId= req.params.userId
-       
-        // const existingUser = await database.collection("users").findOne({id:userId});
-
-        // if(!existingUser){
-        //     await database.collection("users").insertOne({id:userId,cartItems:[]})
-        // }
 
         await database.collection("users").updateOne({id:userId},{
             $addToSet:{cartItems:productId}
