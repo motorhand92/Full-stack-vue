@@ -7,13 +7,18 @@
 
 import ProductDetails from '@/components/ProductDetails.vue';
 import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default{
     name:"ProductDetailsPage",
     components:{
         ProductDetails
     },
-    props:["user"],
+    computed:{
+        ...mapState([
+            "userId"
+        ])
+    },
     data(){
         return{
             product: [],
@@ -21,10 +26,11 @@ export default{
     },
     methods:{
         async addToCart(){
-            const response = await axios.post(`/api/users/12345/cart/`,{id: this.$route.params.productId})
+            const response = await axios.post(`/api/users/${this.userId}/cart/`,{id: this.$route.params.productId})
             const updatedCart = response.data
             this.product=updatedCart;
             alert("An Item successfully added to cart!")
+            this.$router.push("/products")
         },
     },
     async created(){

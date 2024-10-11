@@ -10,6 +10,13 @@ Includes:
 - Navigation Bar :
   - There is a company logo, which is clickable and redirects the user to the products page. It is located on the left side of the page.
   - There is a "Shopping Cart" button on the right side of the page with redirects the user to the Shopping Cart Page.
+- Sign In Page : User can sign in to the website to see his/her specific cart.
+  - For tryout :
+    1.  Username : 12345
+        Password : abc123
+    2.  Username : admin
+        Password : password
+  - The is two seperate carts for two users.
 
 Used:
 

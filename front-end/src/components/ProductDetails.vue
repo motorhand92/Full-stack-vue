@@ -18,6 +18,7 @@
 <script>
 import NotFoundPage from '@/pages/NotFoundPage.vue';
 import axios from 'axios';
+import { mapState } from 'vuex';
 
 export default {
     name:"ProductDetails",
@@ -31,12 +32,15 @@ export default {
     },
     props:["product"],
     computed:{
+        ...mapState([
+            "userId"
+        ]),
         itemIsInCart(){
             return this.cartItems.some(item=>item.id===this.$route.params.productId);
         }
     },
     async created(){
-        const cartResponse = await axios.get(`/api/users/12345/cart`)
+        const cartResponse = await axios.get(`/api/users/${this.userId}/cart`)
         const cartItems = cartResponse.data
         this.cartItems = cartItems
     },
