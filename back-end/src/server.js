@@ -13,6 +13,11 @@ async function Start (){
     app.use(express.json())
 
     app.use("/images",express.static(path.join(__dirname,"../assets")))
+
+    app.use(express.static(
+        path.resolve(__dirname,"../dist"),
+        {maxAge:"1y",etag:false}
+    ))
     
     async function populatedCartIds(ids){
         return Promise.all (ids.map(id=>database.collection("products").findOne({id})))
@@ -78,8 +83,12 @@ async function Start (){
         const populatedCart = await populatedCartIds(user.cartItems);
         res.json(populatedCart)
     })
+
+    app.get("*",(req,res)=>{
+        res.sendFile(path.join(__dirname, "../dist/index.html"))
+    })
     
-    const port = 3000;
+    const port = process.env.PORT || 3000
     
     app.listen(port,()=>{
         console.log(`Server is listening on port ${port}`)

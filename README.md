@@ -23,3 +23,15 @@ Used:
 - Front-end site : Vue.js
 - Back-end database management: MongoDB
 - Back-end and front-end connection : Axios
+
+## Project setup
+
+```
+git clone  or   code download .zip
+```
+
+### Project run
+
+```
+npm run dev  ->  localhost:3000
+```
