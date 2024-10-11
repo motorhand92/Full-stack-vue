@@ -33,6 +33,17 @@ async function Start (){
         const populatedCart = await populatedCartIds(user.cartItems);
         res.json(populatedCart)
     })
+
+    app.get("/api/users",async(req,res)=>{
+        const user = await database.collection("users").find({}).toArray()
+        res.json(user);
+    })
+
+    app.get("/api/users/:userId",async(req,res)=>{
+        const userId = req.params.userId
+        const user = await database.collection("users").findOne({id:userId})
+        res.json(user);
+    })
     
     app.post("/api/users/:userId/cart",async(req,res)=>{   
         const productId = req.body.id
@@ -44,6 +55,17 @@ async function Start (){
         const user = await database.collection("users").findOne({id : req.params.userId})
         const populatedCart = await populatedCartIds(user.cartItems);
         res.json(populatedCart)
+    })
+
+    app.post("/api/signinstatus",async(req,res)=>{
+        const userId= req.body.id
+        const signIn = req.body.signInStatus
+        const user = await database.collection("users").findOne({id:userId})
+        await database.collection("users").updateOne(user,{
+            $set:{signInStatus:signIn}
+        })
+        const updatedUser = await database.collection("users").findOne({id:userId})
+        res.json(updatedUser)
     })
     
     app.delete("/api/users/:userId/cart/:productId",async (req,res)=>{

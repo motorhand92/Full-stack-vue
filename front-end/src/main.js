@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createStore } from 'vuex'
 import App from './App.vue'
 import * as VueRouter from "vue-router"
 import "./temp-data"
@@ -8,6 +9,24 @@ import ShoppingCartPage from './pages/ShoppingCartPage.vue'
 import ProductDetailsPage from './pages/ProductDetailsPage.vue'
 import NotFoundPage from './pages/NotFoundPage.vue'
 import SignInPage from './pages/SignInPage.vue'
+
+const store = createStore({
+    state(){
+        return{
+            userId: null
+        }
+    },
+    mutations:{
+        setUserId (state,updatedUserId){
+            state.userId = updatedUserId
+        }
+    },
+    actions:{
+        updateUserId({commit},updatedUserId){
+            commit("setUserId",updatedUserId) 
+         }
+    }
+})
 
 createApp(App)
 .use(VueRouter.createRouter({
@@ -27,6 +46,10 @@ createApp(App)
     },{
         path:"/:pathMatch(.*)*",
         component:NotFoundPage,
+    },{
+        path:"/",
+        redirect:"/products"
     }]
 }))
+.use(store)
 .mount('#app')

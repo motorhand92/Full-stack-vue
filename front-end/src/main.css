@@ -134,7 +134,13 @@ h1 {
 }
 
 .nav-buttons {
+  float: left;
   margin-left:8px;
+}
+
+.nav-userid {
+  float: left;
+  vertical-align: middle;
 }
 
 .cart-link {
@@ -208,5 +214,23 @@ h1 {
 
 .cart-wrap {
   margin-left:10%;
+  margin-right: 10%;
+}
+
+.signin-page{
+  text-align:center;
+}
+
+.signin-button{
+  margin-top: 16px;
+}
+
+.signin-image{
+  width:25%;
+  height: auto;
+}
+
+.h3text{
+  margin-left: 10%;
   margin-right: 10%;
 }
